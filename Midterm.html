@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Midterm</title>
+<h1>Movie Search</h1>
+
+<script>
+function test(){
+	
+}
+</script>
+
+<script src="https://api.themoviedb.org/3/movie/550?api_key=a484a11a75da4e9f4301d3dbe89bbc9f&callback=test"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+       items = [];
+    var url = 'http://api.themoviedb.org/3/',
+        mode = 'search/movie?query=',
+        input,
+        movieName,
+        key = '&api_key=a484a11a75da4e9f4301d3dbe89bbc9f'; 
+    $('button').click(function() {
+        var input = $('#movie').val(),
+            movieName = encodeURI(input);
+        $.ajax({
+            type: 'GET',
+            url: url + mode + input + key,
+            async: false,
+            jsonpCallback: 'testing',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function(json) {
+                console.dir(json);
+		
+                var str = "<img src = 'https://image.tmdb.org/t/p/w500"+ json.results[0].poster_path+"'/ style='width:300px;height:300px;'>";
+		
+		var myJSON = JSON.stringify(json.results[0].title);
+		var overview = JSON.stringify(json.results[0].overview);
+		var release = JSON.stringify(json.results[0].release_date);
+                items.push("Title:");
+		items.push(myJSON);
+		items.push("<br>");
+		items.push("Details:");
+                items.push(overview);
+		items.push("<br>");
+		items.push("Release Date:");
+		items.push(release);
+		items.push("<br>");
+		items.push(str);
+		items.push("<br>");     
+				            
+		for (var i=0; i<items.length; i++) {
+		     document.getElementById("array").innerHTML = items.join("");
+			
+              }
+		
+            },
+            error: function(e) {
+                console.log(e.message);
+            }
+        });
+    });
+});
+</script>
+<style>
+	body {text-align: center;}
+        body{background: url('https://wallpaperplay.com/walls/full/b/a/4/140043.jpg')}
+</style>
+
+</head>
+<body text='white'>
+Enter a movie title to add it to your list<br>
+<input id="movie" type="text" /><button>Search</button><br>
+Your List:
+<p id = "array"></p>
+</body>
+</html>

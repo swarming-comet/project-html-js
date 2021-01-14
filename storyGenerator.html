@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Story Generator</title>
+<h1>Story Generator</h1>
+
+
+<style>
+.hidden {display: none;}
+</style>
+<script src="storyGenerator.js"></script>
+</head>
+<body>
+<section class="visible" id="one">
+<form>
+<br>
+Enter appropriate values in all of the text boxes. Then click the Done button to generate a story with your entered values plugged into it.<br>
+noun:<input type="text" id="noun" size="15" autofocus><br>
+past tense verb:<input type="text" id="ptv" size="15" autofocus><br> 
+adjective:<input type="text" id="ad" size="15" autofocus><br>
+past tense verb:<input type="text" id="ptv2" size="15" autofocus><br>
+adjective:<input type="text" id="ad2" size="15" autofocus><br>
+<input type="button" value="Done" onclick="storyGen(this.form);"><br>
+<input type="button" value="Reset" onclick="reset(this.form);">
+</form>
+</section>
+<section class="hidden" id="two">
+<font size="5" color="blue"><p id ="result"></p></font>
+<input type="button" value="Reset" onclick="reset(this.form);">
+</section>
+</body>
+</html>

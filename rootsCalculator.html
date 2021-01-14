@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Quadratic Equation Roots Calculator</title>
+<h1>Quadratic Equation Roots Calculator</h1>
+<script>
+function solve(form) {
+    var a;
+    var b;
+    var c;
+    a =parseInt(form.elements["a"].value);
+    b =parseInt(form.elements["b"].value);
+    c =parseInt(form.elements["c"].value);
+    if(a < -99 || a > 99 || a == 0){
+    prompt("Invaild entry for a. Must be non-zero interger between -99 and +99");}
+  else if(b < -99 || b > 99 ){
+   prompt("Invaild entry for b. Must be non-zero interger between -99 and +99");}
+  else if(c < -99 || c > 99 ){
+   prompt("Invaild entry for c. Must be non-zero interger between -99 and +99");}
+  else{
+    var result = (-1 * b + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
+    var result2 = (-1 * b - Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
+    result = result.toFixed(3);
+    result2 = result2.toFixed(3);
+    if(isNaN(result)){document.getElementById("out").innerHTML = "Solution: x's roots are imaginary";
+    }
+    else
+    {document.getElementById("out").innerHTML = "Solution: x = " + result + " x = " + result2;}}
+}
+</script>
+
+<style>
+</style>
+</head>
+<body>
+This web page finds the roots of a polynomial equation of the following form:<br>
+<i>ax<sup>2</sup> + bx + c = 0<br><br>
+<i>a, b, </i> and <i>c</i> must be integers between -99 and +99, and <i>a</i> must be non-zero<br>
+<form>
+a:<input type="text" id="a" size="15" autofocus> 
+b:<input type="text" id="b" size="15" autofocus> 
+c:<input type="text" id="c" size="15" autofocus><br>
+<input type="button" value="Calculate roots" onclick="solve(this.form);"><br>
+<output id = "out"></output>
+</form>
+</body>
+</html>

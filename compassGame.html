@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Compasss Game</title>
+<h1>Compass Game</h1>
+<script>
+function update(form)
+ {document.getElementById("top").innerHTML =
+ form.elements["top1"].value;
+ document.getElementById("left").innerHTML =
+ form.elements["left1"].value;
+ document.getElementById("right").innerHTML =
+ form.elements["right1"].value;
+ document.getElementById("bottom").innerHTML =
+ form.elements["bottom1"].value;
+ form.reset();
+ form.elements["first"].focus();
+} 
+</script>
+<script>
+function Button1(form)
+{var obj1 = document.getElementById('top');
+ var obj2 = document.getElementById('left');
+
+   var temp = obj1.innerHTML;
+   obj1.innerHTML = obj2.innerHTML;
+   obj2.innerHTML = temp;
+} 
+</script>
+<script>
+function Button2(form)
+{var obj1 = document.getElementById('left');
+ var obj2 = document.getElementById('right');
+
+   var temp = obj1.innerHTML;
+   obj1.innerHTML = obj2.innerHTML;
+   obj2.innerHTML = temp;
+} 
+</script>
+<script>
+function Button3(form)
+{var obj1 = document.getElementById('right');
+ var obj2 = document.getElementById('bottom');
+
+   var temp = obj1.innerHTML;
+   obj1.innerHTML = obj2.innerHTML;
+   obj2.innerHTML = temp;
+} 
+</script>
+<script>
+function restart(form)
+ {document.getElementById("top").innerHTML =
+ ""
+ document.getElementById("left").innerHTML =
+ ""
+ document.getElementById("right").innerHTML =
+ ""
+ document.getElementById("bottom").innerHTML =
+ ""
+ form.reset();
+ form.elements["first"].focus();
+} 
+</script>
+
+<style>
+table, th, td {border: none;}
+p.ex1 {display: table;}
+th, td {padding: 10px;}
+div.diagonal {transform: rotate(-45deg);}
+</style>
+</head>
+<body>
+<form>
+The direction letters on the "compass" are scrambled. Press the arrows to properly position the direction letters 
+<table>
+
+<tr><td><div class = "diagonal"><input type="button" value="<->" onclick="Button1(this.form);"></div></td><td colspan="2"><font size="8" color="red"><b><p id="top"></p></b></font></td><td></td></tr>
+<tr><td colspan="2"><font size="8" color="red"><b><p id="left"></p></b></font></td><td><input type="button" value="<->" onclick="Button2(this.form);"></td><td colspan="2"><font size="8" color="red"><b><p id="right"> </p></b></font></td></tr>
+<tr><td></td><td colspan="2"><font size="8" color="red"><b><p id="bottom"></p></b></font></td><td><div class = "diagonal"><input type="button" value="<->" onclick="Button3(this.form);"></div></td></tr>
+</table>
+To restart the game, press <i>Restart</i>, enter N, S, E, and W in any order in the boxes below, and then press <i>Update</i><br>
+<input type="button" value="Restart" onclick="restart(this.form);"><br>
+Top:<input type="text" id="top1" size="15" autofocus> 
+Left:<input type="text" id="left1" size="15" autofocus>
+Right:<input type="text" id="right1" size="15" autofocus>
+Bottom:<input type="text" id="bottom1" size="15" autofocus><br>
+<input type="button" value="Update" onclick="update(this.form);">
+</form>
+
+</body>
+</html>
